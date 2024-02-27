@@ -50,7 +50,7 @@
             console.log('Selected Province ID:', idProvince);
             $('#city').html('');
             $.ajax({
-                url: "{{url('/city')}}",
+                url: "{{route('city')}}",
                 type: "POST",
                 data: {
                     province_id: idProvince,
@@ -61,7 +61,7 @@
                     console.log('Response from server:', result);
                     $('#city').html('<option value="">--Select City--</option>');
                     $.each(result.cities, function(key, value) {
-                        $("#city").append('<option value="' + value.id + '">' + value.name + '</option>');
+                        $("#city").append(`<option value="${value.id}">${value.name}</option>)`);
                     });
                 }
             });
