@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Province extends Model
 {
     use HasFactory;
+
+    protected $table='tbl_province';
     protected $fillable = [
-        'name'=>'string',
+        'name',
     ] ;
 }

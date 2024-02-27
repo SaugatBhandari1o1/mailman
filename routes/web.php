@@ -21,6 +21,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Route::get('/registration', function(){
+//     return view('user.registration');
+// })->middleware(['auth','verified'])->name('registration');
+
+
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
 })->middleware(['auth', 'verified'])->name('verification.notice');
@@ -57,6 +62,11 @@ Route::get('/home', function () {
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/registration', [RegisterController::class, 'index'])->name('index');
+    Route::post('/city', [RegisterController::class, 'getCities']);
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
