@@ -26,6 +26,10 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('admin_assets/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 </head>
 
@@ -36,6 +40,9 @@
     <div class="content">
         @yield('content')
     </div>
+
+    
+
 
 
 
@@ -51,7 +58,27 @@
     <script src="{{asset('admin_assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
     <!-- Template Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{{asset('admin_assets/js/main.js')}}"></script>
+
+
+ <!-- Toastr Notifications -->
+ @if(session('success'))
+    <script>
+        $(document).ready(function(){
+            toastr.success('{{ session('success') }}');
+        });
+    </script>
+@endif
+
+@if(session('error'))
+    <script>
+        $(document).ready(function(){
+            toastr.error('{{ session('error') }}');
+        });
+    </script>
+@endif
+
 </body>
 
 </html>
