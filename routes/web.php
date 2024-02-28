@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\user\RegisterController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +63,14 @@ Route::get('/home', function () {
 })->name('home');
 
 
-Route::get('/admin',[AdminController::class, 'index'])->name('index');
+Route::group(['middleware'=>'admin_auth'], function(){
+    Route::get('/admin',[AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin/forms',[FormController::class, 'index'])->name('form');
+    Route::post('/admin/forms',[FormController::class, 'createCity'])->name('city.create');
+});
+
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/registration', [RegisterController::class, 'index'])->name('index');
     Route::post('/city', [RegisterController::class, 'getCities'])->name('city');
