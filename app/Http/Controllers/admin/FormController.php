@@ -35,4 +35,18 @@ class FormController extends Controller
         return redirect()->back()->with('success','City has been added');
 
     }
+
+    public function provinceUpdate(Request $request){
+        $request->validate([
+            'province'=> 'required',
+            'newProvince'=>'required|string|max:255|unique:tbl_province,name',
+        ]);
+
+        $province = Province::findOrFail($request->province);
+        $province->name = $request->newProvince;
+        $province->save();
+
+        return redirect()->back()->with('success','Province updated Successfully');
+
+    }
 }

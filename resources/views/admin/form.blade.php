@@ -23,7 +23,33 @@
                         <input type="text" class="form-control" name="city" id="city">
                     </div>
                     <div class="m-n2">
-                    <button class="btn btn-primary rounded-pill m-2" type="button" style="padding: 5px 40px;">Upload</button>
+                    <button class="btn btn-outline-primary rounded-pill m-2" type="button" style="padding: 5px 40px;">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">
+                    Province Change
+                </h6>
+                <form action="{{route('province.update')}}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="province" class="form-label">Province</label>
+                        <select class="form-select form-control" id="province" name="province" required>
+                            <option value="" selected disabled>Select Province</option>
+                            @foreach($existingProvince as $province)
+                            <option value="{{$province->id}}">{{$province->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newProvince" class="form-label">New Province Name</label>
+                        <input type="text" class="form-control" name="newProvince" id="newProvince">
+                    </div>
+                    <div class="m-n2">
+                        <button class="btn btn-outline-success rounded-pill m-2" type="button" style="padding: 5px 40px;">Update</button>
                     </div>
                 </form>
             </div>
