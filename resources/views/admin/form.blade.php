@@ -72,6 +72,31 @@
                 </form>
             </div>
         </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">
+                    Update City Name
+                </h6>
+                <form action="{{route('city.update')}}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Select City To Update</label>
+                        <select class="form-select" id="city" name="city" required>
+                            <option value="" selected disabled>Select a City</option>
+                            @foreach($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newCityName" class="form-label">New City Name</label>
+                        <input type="text" class="form-control" id="newCityName" name="newCityName" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-success rounded-pill m-2" style="padding: 5px 40px;">Update</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

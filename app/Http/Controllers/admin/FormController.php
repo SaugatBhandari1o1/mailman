@@ -12,7 +12,8 @@ class FormController extends Controller
 {
     public function index(){
         $existingProvince = Province::all();
-        return view('admin.form', compact('existingProvince'));
+        $cities = city::all();
+        return view('admin.form', compact('existingProvince','cities'));
     }
     public function createCity(Request $request)
     {
@@ -60,5 +61,19 @@ class FormController extends Controller
 
         return redirect()->back()->with('success','New Province Added');
 
+    }
+
+    public function updateCity(Request $request){
+
+        $request->validate([
+            'city' => 'required|exists:tbl_city,id',
+            'newCityName'=> 'required|string|max:255',
+        ]);
+
+        $city = City::findOrFail($request->city);
+        $city->name= $request->newCityName;
+        $city->save();
+
+        return redirect()->back()->with('success','City Name Updated Successfully');
     }
 }

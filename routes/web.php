@@ -69,6 +69,7 @@ Route::group(['middleware'=>'admin_auth'], function(){
     Route::post('/admin/forms',[FormController::class, 'createCity'])->name('city.create');
     Route::post('/admin/update', [FormController::class, 'provinceUpdate'])->name('province.update');
     Route::post('/admin/store', [FormController::class, 'store'])->name('province.add');
+    Route::post('/admin/city.update',[FormController::class,'updateCity'])->name('city.update');
 });
 
 
