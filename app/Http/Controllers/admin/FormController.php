@@ -49,4 +49,16 @@ class FormController extends Controller
         return redirect()->back()->with('success','Province updated Successfully');
 
     }
+
+    public function store(Request $request){
+        $request->validate([
+            'addProvince'=>'required|string|max:255|unique:tbl_province,name',
+        ]);
+        $province = new Province();
+        $province->name = $request->input('addProvince');
+        $province->save();
+
+        return redirect()->back()->with('success','New Province Added');
+
+    }
 }

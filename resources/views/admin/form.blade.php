@@ -45,11 +45,29 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="newProvince" class="form-label">New Province Name</label>
+                        <label for="newProvince" class="form-label">Update Province Name</label>
                         <input type="text" class="form-control" name="newProvince" id="newProvince">
                     </div>
                     <div class="m-n2">
                         <button class="btn btn-outline-success rounded-pill m-2" type="button" style="padding: 5px 40px;">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">
+                    Add Province
+                </h6>
+                <form action="{{route('province.add')}}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="addProvince" class="form-label">Add New Province</label>
+                        <input type="text" class="form-control" name="addProvince" id="addProvince">
+                    </div>
+
+                    <div class="m-n2">
+                        <button class="btn btn-outline-info rounded-pill m-2" style="padding: 5px 40px;">Update</button>
                     </div>
                 </form>
             </div>
